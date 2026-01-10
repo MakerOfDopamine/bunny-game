@@ -1,0 +1,57 @@
+.menu-division-line {
+    border-top: 5px solid #000000;
+    margin: 10px 0;
+}
+
+.tabs {
+    padding: 8px 16px;
+}
+
+.menu-tabs {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.utility-buttons {
+    background-color: #8b7e72;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.red {
+    background-color: #d9534f;
+}
+
+.gray-text {
+    color: gray;
+}
+
+.menu-tab-button {
+    background-color: #727272;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fffcd4;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}

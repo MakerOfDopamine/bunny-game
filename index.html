@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunny Game</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        const RABBIT_NAMES = ["bunners.", "buns.", "bnuys.", "floofs.", "rabbits.", "bunnies."]
+        const ge = (id) => document.getElementById(id);
+        const setText = (id, content) => {ge(id).innerHTML = content};
+        const display = (id, style) => {ge(id).style.display = style};
+        const show = (id) => {display(id, "block")};
+        const hide = (id) => {display(id, "none")};
+        const random = (a, b) => Math.floor(Math.random() * (b - a) + a);
+    </script>
+
+    <!-- Scripts (load order: number library, technical files, game content files, main) -->
+    <script src="break_eternity.js"></script>
+    <script src="saveload.js" defer></script>
+    <script src="tabs.js" defer></script>
+    <script src="rabbits.js" defer></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div id="menu-tab-switching" class="menu-tabs">
+        <button id="menu-bunny_catching-tabbuttton" class="menu-tab-button" onclick="switchTab('bunny_catching')">
+            Bunny Catching
+        </button>
+        <button id="menu-settings-tabbutton" class="menu-tab-button" onclick="switchTab('settings')">
+            Settings
+        </button>
+    </div>
+    <div id="menu-division-line" class="menu-division-line"></div>
+    <div id="tab-bunny_catching" class="tabs">
+        <div id="display-bunny_status">
+            <span id="display-bunny_status-bunny_count">You have some rabbits</span> <span id="display-bunny_status-bunny_count-name"></span><br>
+            <span id="display-bunny_status-money_count">You have some money</span>
+        </div><br>
+        <div id="section-bunny_catching">
+            <button id="button-bunny_catching-catch" onclick="catchRabbit()" class="utility-buttons">
+                Let's go rabbit catching!
+            </button><br>
+            <button id="button-bunny_catching-sell" onclick="sellRabbit()" class="utility-buttons">
+                Sell a rabbit :(
+            </button>
+            <button id="button-bunny_catching-sellall" onclick="sellAllRabbits()" class="utility-buttons red">
+                Sell ALL rabbits >:(
+            </button>
+        </div>
+    </div>
+    <div id="tab-settings" style="display: none" class="tabs">
+        <button id="button-settings-save" onclick="save()" class="utility-buttons">
+            Save Game
+        </button>
+        <button id="button-settings-load" onclick="reset()" class="utility-buttons red">
+            Reset Game
+        </button><br><br>
+
+        <span id="game-info" class="gray-text">
+            Bunny Game a0.0.1<br>
+            Created by Psi<br>
+        </span>
+        Filler text owo
+    </div>
+
+</body>
+</html>
