@@ -22,12 +22,16 @@
     <script src="saveload.js" defer></script>
     <script src="tabs.js" defer></script>
     <script src="rabbits.js" defer></script>
+    <script src="buildings.js" defer></script>
     <script src="main.js" defer></script>
 </head>
 <body>
     <div id="menu-tab-switching" class="menu-tabs">
         <button id="menu-bunny_catching-tabbuttton" class="menu-tab-button" onclick="switchTab('bunny_catching')">
             Bunny Catching
+        </button>
+        <button id="menu-buildings-tabbuttton" class="menu-tab-button" onclick="switchTab('buildings')">
+            Buildings
         </button>
         <button id="menu-settings-tabbutton" class="menu-tab-button" onclick="switchTab('settings')">
             Settings
@@ -51,6 +55,42 @@
             </button>
         </div>
     </div>
+    <div id="tab-buildings" style="display: none" class="tabs">
+        <div id="wrapper-buildings-flexbox" class="flexbox-horizontal">
+            <div id="section-buildings-money_to_bunny" class="flexbox-vertical buildings-option-container">
+                <button onclick="buyMoneyToBunnyBuilding(0)" class="buildings-option flexbox-vertical">
+                    <div id="subsection-buildings-money_to_bunny-cage-upper" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
+                        <div class="big">
+                            Cage
+                        </div>
+                        <span class="big" id="display-buildings-money_to_bunny-cage-amount">0</span>
+                    </div>
+                    <div id="subsection-buildings-money_to_bunny-cage-lower" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
+                        <div>
+                            Each cage grants +<span id="display-buildings-money_to_bunny-cage-per_second_each">0.1</span> bunnies per second. (Total <span id="display-buildings-money_to_bunny-cage-per_second_total">0</span> bunnies per second)
+                        </div>
+                        <span id="display-buildings-money_to_bunny-cage-cost">Cost: $10</span>
+                    </div>
+                </button>
+            </div>
+            <div id="section-buildings-bunny_to_money" class="flexbox-vertical buildings-option-container">
+                <button class="buildings-option flexbox-vertical">
+                    <div id="subsection-buildings-bunny_to_money-rabbitbeg-upper" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
+                        <div class="big">
+                            Placeholder
+                        </div>
+                        <div></div>
+                    </div>
+                    <div id="subsection-buildings-bunny_to_money-rabbitbeg-lower" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
+                        <div>
+                            bunny yourself
+                        </div>
+                        <div></div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
     <div id="tab-settings" style="display: none" class="tabs">
         <button id="button-settings-save" onclick="save()" class="utility-buttons">
             Save Game
@@ -60,7 +100,7 @@
         </button><br><br>
 
         <span id="game-info" class="gray-text">
-            Bunny Game a0.0.1<br>
+            Bunny Game a0.0.2<br>
             Created by Psi<br>
         </span>
         Filler text owo

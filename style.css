@@ -1,10 +1,10 @@
 .menu-division-line {
-    border-top: 5px solid #000000;
-    margin: 10px 0;
+    border-top: 5px solid #aaa;
+    margin-top: 10px;
 }
 
 .tabs {
-    padding: 8px 16px;
+    padding: 16px;
 }
 
 .menu-tabs {
@@ -26,12 +26,51 @@
     border-radius: 4px;
 }
 
+.flexbox-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.flexbox-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.buildings-option-container {
+    background-color: #999999;
+    flex: 1;
+    height: 85vh;
+    padding: 12px;
+}
+
+.buildings-option {
+    background-color: #666666;
+    border-bottom: 2px solid #444444;
+    border-right: 2px solid #444444;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .red {
     background-color: #d9534f;
 }
 
+.big {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
 .gray-text {
-    color: gray;
+    color: rgb(223, 223, 223);
 }
 
 .menu-tab-button {
@@ -50,8 +89,8 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #fffcd4;
-    color: #333333;
+    background-color: #111;
+    color: #fff;
     margin: 0;
     padding: 0;
 }

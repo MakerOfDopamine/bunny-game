@@ -18,6 +18,14 @@ function fixValues(x) {
     }
 }
 
+function updateSave(oldSave) {
+    if (oldSave.saveVersion < 1) {
+        oldSave.buildings = default_player.buildings;
+        oldSave.saveVersion = 1;
+    }
+    return oldSave;
+}
+
 function load(id_seek = "bunny-game-save") {
     try { 
         var saveData = JSON.parse(atob(localStorage.getItem(id_seek)));
@@ -25,6 +33,9 @@ function load(id_seek = "bunny-game-save") {
             throw "Null save";
         }
         player = fixValues(saveData);
+        if (player.saveVersion < default_player.saveVersion) {
+            player = updateSave(player);
+        }
     } catch {
         alert("Save is null or unreadable. You may be a new player (or just reset your save), or your save may have been corrupted.");
         try {console.log(saveData)} catch {};
