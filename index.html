@@ -19,6 +19,7 @@
 
     <!-- Scripts (load order: number library, technical files, game content files, main) -->
     <script src="break_eternity.js"></script>
+    <script src="tooltips.js" defer></script>
     <script src="saveload.js" defer></script>
     <script src="tabs.js" defer></script>
     <script src="rabbits.js" defer></script>
@@ -58,36 +59,42 @@
     <div id="tab-buildings" style="display: none" class="tabs">
         <div id="wrapper-buildings-flexbox" class="flexbox-horizontal">
             <div id="section-buildings-money_to_bunny" class="flexbox-vertical buildings-option-container">
-                <button onclick="buyMoneyToBunnyBuilding(0)" class="buildings-option flexbox-vertical">
-                    <div id="subsection-buildings-money_to_bunny-cage-upper" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
-                        <div class="big">
-                            Cage
+                <div id="container-buildings-money_to_bunny-cage" class="tooltip-hover flexbox-vertical">
+                    <button id="button-buildings-money_to_bunny-cage" onclick="buyMoneyToBunnyBuilding(0)" class="buildings-option flexbox-vertical">
+                        <div id="subsection-buildings-money_to_bunny-cage-upper" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
+                            <div class="big">
+                                Cage
+                            </div>
+                            <span class="big" id="display-buildings-money_to_bunny-cage-amount">0</span>
                         </div>
-                        <span class="big" id="display-buildings-money_to_bunny-cage-amount">0</span>
-                    </div>
-                    <div id="subsection-buildings-money_to_bunny-cage-lower" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
-                        <div>
-                            Each cage grants +<span id="display-buildings-money_to_bunny-cage-per_second_each">0.1</span> bunnies per second. (Total <span id="display-buildings-money_to_bunny-cage-per_second_total">0</span> bunnies per second)
+                        <div id="subsection-buildings-money_to_bunny-cage-lower" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
+                            <div>
+                                Each cage grants +<span id="display-buildings-money_to_bunny-cage-per_second_each">0.1</span> bunnies per second. (Total <span id="display-buildings-money_to_bunny-cage-per_second_total">0</span> bunnies per second)
+                            </div>
+                            <span id="display-buildings-money_to_bunny-cage-cost">Cost: $10</span>
                         </div>
-                        <span id="display-buildings-money_to_bunny-cage-cost">Cost: $10</span>
-                    </div>
-                </button>
+                    </button>
+                    <span id="tooltip-buildings-money_to_bunny-cage" class="tooltip">Buy a simple cage to help trap some fluffy rabbits in. <br>(Very humane living conditions)</span>
+                </div>
             </div>
             <div id="section-buildings-bunny_to_money" class="flexbox-vertical buildings-option-container">
-                <button class="buildings-option flexbox-vertical">
-                    <div id="subsection-buildings-bunny_to_money-rabbitbeg-upper" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
-                        <div class="big">
-                            Placeholder
+                <div id="container-buildings-bunny_to_money-rabbit_begging" class="tooltip-hover flexbox-vertical">
+                    <button id="button-buildings-bunny_to_money-rabbit_begging" onclick="buyBunnyToMoneyBuilding(0)" class="buildings-option flexbox-vertical">
+                        <div id="subsection-buildings-bunny_to_money-rabbit_begging-upper" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
+                            <div class="big">
+                                Rabbit Begging
+                            </div>
+                            <span class="big" id="display-buildings-bunny_to_money-rabbit_begging-amount">0</span>
                         </div>
-                        <div></div>
-                    </div>
-                    <div id="subsection-buildings-bunny_to_money-rabbitbeg-lower" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
-                        <div>
-                            bunny yourself
+                        <div id="subsection-buildings-bunny_to_money-rabbit_begging-lower" style="width: 100%; justify-content: space-between;" class="flexbox-horizontal">
+                            <div>
+                                Telling your rabbits to beg humans for money grants +$<span id="display-buildings-bunny_to_money-rabbit_begging-per_second_each">0.1</span> per second. (Total $<span id="display-buildings-bunny_to_money-rabbit_begging-per_second_total">0</span> per second)
+                            </div>
+                            <span id="display-buildings-bunny_to_money-rabbit_begging-cost">Cost: 10 rabbits</span>
                         </div>
-                        <div></div>
-                    </div>
-                </button>
+                    </button>
+                    <span id="tooltip-buildings-bunny_to_money-rabbit_begging" class="tooltip">Tell your rabbits to beg humans for food and a little money.</span>
+                </div>
             </div>
         </div>
     </div>

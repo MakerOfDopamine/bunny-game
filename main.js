@@ -8,12 +8,15 @@ const random = (a, b) => Math.floor(Math.random() * (b - a) + a);
 */
 
 const default_player = {
-    saveVersion: 1,
+    saveVersion: 2,
     rabbit: new Decimal(0), // Rabbit Count
     money: new Decimal(0), // Money
     buildings: {
-        moneyToBunny: {
+        mtb: {
             0: new Decimal(0) // Cage Amount
+        },
+        btm: {
+            0: new Decimal(0) // Rabbit Begging Amount
         }
     }
 }
@@ -21,7 +24,11 @@ const default_player = {
 let player;
 
 function getBunnyPerSecondFromBuilding(id) {
-    return player.buildings.moneyToBunny[0].mul(BUILDING_CHARACTERISTICS.mtb[0].baseProd);
+    return player.buildings.mtb[0].mul(BUILDING_CHARACTERISTICS.mtb[0].baseProd);
+}
+
+function getMoneyPerSecondFromBuilding(id) {
+    return player.buildings.btm[0].mul(BUILDING_CHARACTERISTICS.btm[0].baseProd);
 }
 
 function getBunnyPerSecond() {
@@ -34,6 +41,9 @@ function getBunnyPerSecond() {
 
 function getMoneyPerSecond() {
     let x = new Decimal(0);
+    for (let i = 0; i < 1; i++) {
+        x = x.add(getMoneyPerSecondFromBuilding(0));
+    }
     return x;
 }
 
@@ -42,10 +52,15 @@ function gameLoop() {
         setText("display-bunny_status-bunny_count", `You have ${player.rabbit.toFixed(player.rabbit.lte(1e6) ? 0 : 2)}`);
         setText("display-bunny_status-money_count", `You have $${player.money.toFixed(2)}.`);
 
-        setText("display-buildings-money_to_bunny-cage-amount", player.buildings.moneyToBunny[0].toFixed(0));
+        setText("display-buildings-money_to_bunny-cage-amount", player.buildings.mtb[0].toFixed(0));
         setText("display-buildings-money_to_bunny-cage-per_second_each", getBuildingEffect(0).toFixed(2));
         setText("display-buildings-money_to_bunny-cage-per_second_total", getBunnyPerSecondFromBuilding(0).toFixed(2));
-        setText("display-buildings-money_to_bunny-cage-cost", `Cost: $${getNextMoneyToBunnyBuildingCost(0, player.buildings.moneyToBunny[0]).toFixed(2)}`);
+        setText("display-buildings-money_to_bunny-cage-cost", `Cost: $${getNextMoneyToBunnyBuildingCost(0, player.buildings.mtb[0]).toFixed(2)}`);
+
+        setText("display-buildings-bunny_to_money-rabbit_begging-amount", player.buildings.btm[0].toFixed(0));
+        setText("display-buildings-bunny_to_money-rabbit_begging-per_second_each", getBuildingEffect(0).toFixed(2));
+        setText("display-buildings-bunny_to_money-rabbit_begging-per_second_total", getMoneyPerSecondFromBuilding(0).toFixed(2));
+        setText("display-buildings-bunny_to_money-rabbit_begging-cost", `Cost: ${getNextBunnyToMoneyBuildingCost(0, player.buildings.btm[0]).toFixed(2)} rabbits`);
 
         player.rabbit = player.rabbit.add(getBunnyPerSecond().div(20));
         player.money = player.money.add(getMoneyPerSecond().div(20));

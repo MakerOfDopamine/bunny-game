@@ -23,6 +23,12 @@ function updateSave(oldSave) {
         oldSave.buildings = default_player.buildings;
         oldSave.saveVersion = 1;
     }
+    if (oldSave.saveVersion < 2) {
+        oldSave.buildings.mtb = oldSave.buildings.moneyToBunny;
+        delete oldSave.buildings.moneyToBunny;
+        oldSave.buildings.btm = default_player.buildings.btm;
+        oldSave.saveVersion = 2;
+    }
     return oldSave;
 }
 
